@@ -1,0 +1,182 @@
+<div class="row m-tc">
+    <div class="col-xs-12  col-xs-12 main">
+        <span class="m-title m-title-margin">{[talksetting.html.phonesetting]}</span>
+        <div class="panel panel-body m-df-panel">
+            <form role="form">
+                <!-- 视频分辨率 -->
+                <label class="m-ns-lt1">{[talksetting.html.Videoresolution]}</label>
+                <div class="form-group m-tc-group ">
+                    <label>{[talksetting.html.Maximumvideoresolution]}</label>
+                    <select class="form-control" name="maxVideoResolution">
+                        <option value="1080P/30FPS">1080P/30FPS</option>
+                        <option selected value="720P/30FPS">720P/30FPS</option>
+                        <option value="360P/30FPS">360P/30FPS</option>
+                        <option value="4CIF">4CIF</option>
+                        <option value="CIF">CIF</option>
+                    </select>
+                </div>
+                <div class="form-group m-tc-group ">
+                    <label>{[talksetting.html.Maximumauxiliaryflowresolution]}</label>
+                    <select class="form-control" name="maxSecondaryFlowResolution">
+                        <option value="1080P/30FPS">1080P/30FPS</option>
+                        <option value="1080P/15FPS">1080P/15FPS</option>
+                        <option value="1080P/5FPS" selected>1080P/5FPS</option>
+                        <option value="720P/30FPS">720P/30FPS</option>
+                        <option value="720P/15FPS">720P/15FPS</option>
+                        <option value="720P/5FPS">720P/5FPS</option>
+                    </select>
+                </div>
+
+                <!-- 带宽策略 -->
+                <label class="m-ns-lt1" style="display:none;margin-bottom: 12px;">{[talksetting.html.brandwidth]}</label>
+                <div class="form-group m-tc-group" style="display:none;">
+                    <label>{[talksetting.html.frameratiofirst]}</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" value="1" checked name="brandWidthStrategy"> ({[talksetting.html.tips.videoframefirst]})
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group m-tc-group" style="display:none;">
+                    <label>{[talksetting.html.resolutionfirst]}</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" value="2" name="brandWidthStrategy"> ({[talksetting.html.tips.videoresolutionfirst]})
+                        </label>
+                    </div>
+                </div>
+
+                <!-- 视频布局 -->
+                <label class="m-ns-lt1">{[talksetting.html.videolayout]}</label>
+                <div class="form-group m-tc-group ">
+                    <label>{[talksetting.html.dividedmode]}</label>
+                    <select class="form-control" name="videoDividedMode">
+                        <option value="2">2*2</option>
+                        <option value="3">3*3</option>
+                        <option value="4" selected>4*4</option>
+                        <option value="5">5*5</option>
+                        <option value="6">6*6</option>
+                        <option value="7">7*7</option>
+                    </select>
+                    <p class="help-block">{[talksetting.html.setdivided.maxframe]}</p>
+                    <div class="m-tc-dm-div">
+                        {[talksetting.html.tips.biggermax]}
+                        <select class="form-control m-tc-dm-iv-select" name="intervalForDividedMode">
+                            <option value="15">15s</option>
+                            <option value="30" selected>30s</option>
+                            <option value="45">45s</option>
+                            <option value="60">60s</option>
+                        </select>
+                        {[talksetting.html.tips.after]}<br>
+                        <div>
+                            <label>
+                                <input type="radio" value="1" checked name="tourRoundForDividedMode"> {[talksetting.html.tips.singleframetour]}
+                            </label>
+                        </div>
+                        <div>
+                            <label>
+                                <input type="radio" value="2" name="tourRoundForDividedMode"> {[talksetting.html.tips.allframetour]}
+                            </label>
+                        </div>
+                    </div>
+                    <br>
+
+                    <label>{[talksetting.html.oneplusnmode]}</label>
+                    <select class="form-control" name="videoOneplusNMode">
+                        <option value="5">1+5</option>
+                        <option value="7" selected>1+7</option>
+                        <option value="9">1+9</option>
+                    </select>
+                    <p class="help-block">{[talksetting.html.setoneplusn.maxframe]}</p>
+                    <div class="m-tc-dm-div">
+                        {[talksetting.html.oneplus.biggermax]}
+                        <select class="form-control m-tc-dm-iv-select" name="intervalForOneplusNMode">
+                            <option value="15">15s</option>
+                            <option value="30" selected>30s</option>
+                            <option value="45">45s</option>
+                            <option value="60">60s</option>
+                        </select>
+                        {[talksetting.html.tips.after]}<br>
+                        <div>
+                            <label>
+                                <input type="radio" value="1" style="margin-top: 10px;" checked name="tourRoundForOneplusNMode">
+                                <select class="form-control m-tc-dm-iv-select" name="numberofPicForOneplusNMode">
+                                    <option value="1" selected>1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                                {[talksetting.html.oneplus.frametour]}<span id="numberofPicForOneplusNModeSpan">1</span>{[talksetting.html.oneplus.smallframe]}
+                            </label>
+                        </div>
+                        <div>
+                            <label>
+                                <input type="radio" value="2" name="tourRoundForOneplusNMode"> {[talksetting.html.oneplus.allframetour]}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 会议设置 -->
+                <label class="m-ns-lt1">{[talksetting.html.meetsetting]}</label>
+                <div class="form-group m-tc-group ">
+                    <label>{[talksetting.html.forward.meetingtime]}</label>
+                    <select class="form-control" name="forwardMeetingTime">
+                        <option value="5" selected>5{[talksetting.html.minutes]}</option>
+                        <option value="10">10{[talksetting.html.minutes]}</option>
+                        <option value="15">15{[talksetting.html.minutes]}</option>
+                        <option value="30">30{[talksetting.html.minutes]}</option>
+                        <option value="45">45{[talksetting.html.minutes]}</option>
+                        <option value="60">60{[talksetting.html.minutes]}</option>
+                    </select>
+                </div>
+
+                <!-- IVR服务 -->
+                <label class="m-ns-lt1">{[talksetting.html.ivrservice]}</label>
+                <div class="form-group m-tc-group ">
+                    <label>{[talksetting.html.ivrlanguage]}</label>
+                    <select class="form-control" name="ivrLanguage">
+                        <option value="zh_CN" selected>{[talksetting.html.chinese]}</option>
+                        <option value="en_US">{[talksetting.html.english]}</option>
+                    </select>
+                </div>
+
+                <!-- 呼叫带宽 -->
+                <label class="m-ns-lt1">{[talksetting.html.Callbandwidth]}</label>
+                <div class="form-group m-tc-group ">
+                    <label>{[talksetting.html.Maximumsingleuplinkbandwidth]}</label>
+                    <select class="form-control" name="maxUpstreamBandwidth">
+                        <option value="4M">4Mbps</option>
+                        <option value="3M">3Mbps</option>
+                        <option value="2M" selected>2Mbps</option>
+                        <option value="1.5M">1.5Mbps</option>
+                        <option value="1M">1Mbps</option>
+                        <option value="768Kbps">768Kbps</option>
+                        <option value="512Kbps">512Kbps</option>
+                        <option value="256Kbps">256Kbps</option>
+                        <option value="128Kbps">128Kbps</option>
+                    </select>
+                    <p class="help-block">{[talksetting.html.restrictfrom]}</p>
+                </div>
+                <div class="form-group m-tc-group ">
+                    <label>{[talksetting.html.Maximumsingledownstreambandwidth]}</label>
+                    <select class="form-control" name="maxDownstreamBandwidth">
+                        <option value="4M">4Mbps</option>
+                        <option value="3M">3Mbps</option>
+                        <option value="2M" selected>2Mbps</option>
+                        <option value="1.5M">1.5Mbps</option>
+                        <option value="1M">1Mbps</option>
+                        <option value="768Kbps">768Kbps</option>
+                        <option value="512Kbps">512Kbps</option>
+                        <option value="256Kbps">256Kbps</option>
+                        <option value="128Kbps">128Kbps</option>
+                    </select>
+                    <p class="help-block">{[talksetting.html.restrictto]}</p>
+                </div>
+                <button type="button" onmouseup="talksetting.save()" class="btn btn-yealink btn-default-size m-commit" style="margin-top: 20px">{[talksetting.html.save]}</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="html/talksetting/talksetting.js"></script>

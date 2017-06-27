@@ -1,0 +1,204 @@
+<div class="row m-cb">
+    <div class="col-xs-12  col-xs-12 main">
+
+        <div class="m-header m-title-margin" style="height: 34px">
+            <span class="m-header-title">{[configback.html.title]}</span>
+            <div class="m-header-btn pull-right">
+                <button class="btn btn-yealink btn-height34 m-tau-addbtn">
+                    <img src="img/operation/add-white.png"><span>{[configback.html.back-up]}</span>
+                </button>
+                <button class="btn btn-yealink btn-height34 m-tau-uploadbtn">
+                    <img src="img/operation/upload-white.png"><span>{[configback.html.upload]}</span>
+                </button>
+                <button class="btn btn-yealink btn-height34 m-tau-cogbtn">
+                    <img src="img/operation/configBackOpt.png"><span>{[configback.html.back-up.option]}</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="panel panel-body">
+            <div class="m-am-b2 m-magin-bottom10">
+                <a class="no-underline m-btn-batch-del" href="javascript:void(0);" id="batchDeleteStaff" title="{[configback.html.deleteMany]}">
+                    <!--<img src="img/button/sgdel.png" class="m-img-position">-->
+                    <span>{[configback.html.deleteMany]}</span>
+                </a>
+            </div>
+
+            <!--<div class="m-magin-bottom10">-->
+                <!--<input type="button" class="m-btn-batch-del" value="批量删除" title="批量删除">-->
+            <!--</div>-->
+            <table id="m-cb-table"></table>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" data-backdrop="static" id="m-cb-add">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width: 680px;border-radius: 0px;height: 300px;">
+            <div class="modal-header"  style="height: 40px">
+                <span class="modal-title" style="font-size: 18px;text-align: center;display: block;width: 100%;position: relative;bottom: 8px;">{[configback.html.add.back-up]}</span>
+            </div>
+            <div class="modal-body" style="padding: 0px 68px;">
+                <form role="form" id="m-cb-addform">
+                    <div class="form-group" style="margin-top: 68px;margin-bottom: 62px;">
+                        <div id="fileName-error-div" style="padding-left: 174px;color:#FF0000;position: absolute;top: -30px;left: 5px;;"></div>
+                        <label class="control-label" style="width: 106px;">{[configback.html.fileName]}：</label>
+                        <input maxlength="128" style="padding-left: 20px;;height: 40px;display: inline-block;width: 426px; border-radius: 0px;" type="text" name="fileName" id="fileName" class="form-control">
+                    </div>
+                </form>
+
+
+                <div style="margin-left: 110px;">
+                    <button type="button" class="btn btn-yealink btn-default-size m-commit" >{[global.html.btn.ok]}</button>
+                    <button type="button" class="btn btn-yealink-cancel btn-default-size" data-dismiss="modal" style="margin-left: 25px;">{[global.html.btn.cancel]}</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" data-backdrop="static" id="m-cb-upload">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width: 680px;border-radius: 0px;height: 300px;">
+            <div class="modal-header" style="height: 40px">
+                <span class="modal-title" style="font-size: 18px;text-align: center;display: block;width: 100%;position: relative;bottom: 8px;">{[configback.html.restore]}</span>
+            </div>
+            <div class="modal-body" style="padding: 0px 68px;">
+                <form role="form" id="m-cb-uploadform">
+                    <div class="form-group" style="margin-top: 68px; margin-bottom: 0px;">
+                        <div id="ff-error-div" style="color:#FF0000;position: absolute;top: -30px;"></div>
+                    </div>
+                    <div class="form-control m-su-group" style="width: 470px;margin-bottom: 38px">
+                        <div  class=" btn-file"><i class="glyphicon glyphicon-folder-open"></i>&nbsp;
+                            <span class="hidden-xs" id="importFileName" style="position: absolute">{[staffaccountmanage.html.choosefile]}</span>
+                            <input id="ff" type="file" name="ff" accept="application/x-gzip">
+                        </div>
+                        <button style="position: relative;top: -27px;left: 470px;" tabindex="500" type="button" id="browseBtn" class="btn btn btn-yealink">
+                            <span class="hidden-xs"> {[staffaccountmanage.html.Browse]}</span></button>
+                    </div>
+
+                </form>
+                <div style="margin-left: 110px;">
+                    <button type="button" class="btn btn-yealink btn-default-size m-commit">{[configback.html.restore.rightnow]}</button>
+                    <button type="button" class="btn btn-yealink-cancel btn-default-size" data-dismiss="modal" style="margin-left: 25px;">{[global.html.btn.cancel]}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" data-backdrop="static" id="m-cb-config">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width: 700px;border-radius: 0px;height: 460px;">
+            <div class="modal-header" style="height: 40px">
+                <span class="modal-title" style="font-size: 18px;text-align: center;display: block;width: 100%;position: relative;bottom: 8px;">{[configback.html.back-up.setting]}</span>
+            </div>
+            <div class="modal-body" style="padding: 0px 60px;">
+                <form role="form" id="m-cb-configform" style="margin-top: 38px;margin-bottom: 38px;">
+                    <div class="form-group">
+                        <label class="control-label m-cb-text-right" style="width: 200px;">{[configback.html.back-up.regular]}：</label>
+                        <label>
+                            <input type="checkbox" name="timedAutoBackup" id="timedAutoBackup"> {[configback.html.start]}
+                        </label>
+                    </div>
+                    <div class="m-cb-config display-none" style="margin-left: 0px;">
+                        <div class="form-group">
+                            <label class="control-label m-cb-text-right">{[configback.html.rec]}：</label>
+                            <label class="m-cb-round-sel-label">
+                                <a class="syslog-sm-a" round="month" href="#" onclick="configback.changeSelectEvent('month')">
+                                    <span class="m-cb-auto-round-span-sel">{[configback.html.monthly]}</span>
+                                </a>
+                                <a class="syslog-sm-a" round="week" href="#" onclick="configback.changeSelectEvent('week')">
+                                    <span class="m-cb-auto-round-span-not-sel">{[configback.html.weekly]}</span>
+                                </a>
+                                <a class="syslog-sm-a" round="day" href="#" onclick="configback.changeSelectEvent('day')">
+                                    <span class="m-cb-auto-round-span-not-sel">{[configback.html.dayly]}</span>
+                                </a>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label m-cb-text-right">{[configback.html.date]}：</label>
+                            <select class="form-control" name="date">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="13">13</option>
+                                <option value="14">14</option>
+                                <option value="15">15</option>
+                                <option value="16">16</option>
+                                <option value="17">17</option>
+                                <option value="18">18</option>
+                                <option value="19">19</option>
+                                <option value="20">20</option>
+                                <option value="21">21</option>
+                                <option value="22">22</option>
+                                <option value="23">23</option>
+                                <option value="24">24</option>
+                                <option value="25">25</option>
+                                <option value="26">26</option>
+                                <option value="27">27</option>
+                                <option value="28">28</option>
+                                <option value="29">29</option>
+                                <option value="30">30</option>
+                                <option value="31">31</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <div id="maxFiles-error-div"  style="padding-left: 105px;color:#FF0000;position: absolute;top: 150px;left: 160px;"></div>
+                            <label class="control-label m-cb-text-right">{[configback.html.max]}：</label>
+                            <input type="text" class="form-control"value="3" name="maxFiles" id="maxFiles" maxlength="2" style="padding-left: 24px">
+                            <p class="help-block">{[configback.html.overflow]}</p>
+                        </div>
+                    </div>
+                </form>
+
+                <div style="margin-left: 83px;">
+                    <button type="button" class="btn btn-yealink btn-default-size m-commit" >{[global.html.btn.ok]}</button>
+                    <button type="button" class="btn btn-yealink-cancel btn-default-size" style="margin-left: 55px;" data-dismiss="modal">{[global.html.btn.cancel]}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--还原滚动条  -->
+<div class="modal fade" id="progressBarModal" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true"  data-backdrop="static">
+    <div class="modal-dialog" style="width: 713px;">
+        <div class="modal-content" id="progressBarContent" style="height: 152px;width: 713px;">
+            <div class="modal-body" style="padding-top: 45px;padding-left: 46px;">
+                <span id="progressBarFooter" style="display: block;width: 100%;text-align: center;font-size: 22px;color: #454444;margin-bottom: 26px;height: 22px;">
+                    {[configback.html.restoring]}
+                </span>
+                <div class="progress" style="height: 12px;width: 575px;background-color: #d4d4d4;">
+                    <div class="progress-bar" role="progressbar"  aria-valuenow="60"
+                         aria-valuemin="0" aria-valuemax="100" style="width: 20%;background-color: #0cc295">
+                    </div>
+                </div>
+                <span id="progressValueshow" style="position: relative;top: -38px;left: 587px; font-size: 16px;color: #444444">20%</span>
+                <!-- 本次还原需要重启服务，操作中 -->
+                <div id="sendMailTestSuccess" style="text-align:center;font-size:20px;display:none">
+                    {[restart.js.tips.restart]}, {[configback.html.restoring]}
+                </div>
+                <!-- 操作失败!-->
+                <div id="sendMailTestFail" style="text-align:center;font-size:20px;display:none">
+                    {[configback.html.restore.fail]}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="html/configback/configback.js"></script>

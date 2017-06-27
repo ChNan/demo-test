@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 不缓存 -->
+    <META HTTP-EQUIV="Pragma" CONTENT="no-cache"> 
+    <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache"> 
+    <META HTTP-EQUIV="Expires" CONTENT="0"> 
+
+
+    <title>main</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-table.css" rel="stylesheet">
+    <link href="css/daterangepicker.css" rel="stylesheet">
+    <link href="css/switch.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/dashboard.css" rel="stylesheet">
+    <link href="css/common.css" rel="stylesheet">
+    <link href="css/global.css" rel="stylesheet">
+    <link href="css/font-awesome.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top g-menu"  role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Soft MCU</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" >
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">快捷设置</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">简体中文 <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#">简体中文</a></li>
+                <li><a href="#">英语</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="g-leftmenu" >
+      <div class="sidebar">
+      	<a id="sys-symbol" href="#"><img src="img/icon.jpg" class="menu-icon" /></a>
+        <ul class="nav nav-sidebar">
+            <li name="systemstatus">
+              <a href="#">
+                <img class="menu-img" src="img/icon.jpg" />
+                <span class="menu-text"> 系统状态 </span>
+              </a>
+            </li>
+            <li name="staffaccountmanage" >
+              <a href="#">
+                <img class="menu-img" src="img/icon.jpg" />
+                <span class="menu-text"> 账号管理 </span>
+              </a>
+            </li>
+            <li name="conferenceroom">
+              <a href="#">
+                <img class="menu-img" src="img/icon.jpg" />
+                <span class="menu-text"> 会议室管理 </span>
+              </a>
+            </li>
+            <li name="item5" class="showMenu">
+              <a href="#">
+                <img class="menu-img" src="img/icon.jpg" />
+                <span class="menu-text"> 系统管理 </span>
+              </a>
+            </li>
+          <li name="conference">
+            <a href="#">
+              <img class="menu-img" src="img/icon.jpg" />
+              <span class="menu-text"> 会议管理 </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="g-main">
+        <!--  
+        <div class="searching-nav">            
+          <nav class="navbar"  role="navigation">
+            <div class="navbar-header">
+              <a class="navbar-brand searching-nav-title">Soft MCU > Welcome </a>
+            </div>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Admin <span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li class="divider"></li>
+                    <li class="dropdown-header">Nav header</li>
+                    <li><a href="#">Separated link</a></li>
+                    <li><a href="#">One more separated link</a></li>
+                  </ul>
+                </li>
+            </ul>  
+          </nav>
+        </div>-->
+        <div class="container-fluid">
+          <div class="g-main-menu">
+          </div>
+          <div class="g-main-data">  
+          </div>
+        </div>    
+    </div>
+
+    <!-- 提示框 -->
+    <div class="modal fade" id="promptModal" tabindex="-1" role="dialog" data-backdrop="static"
+         hidden="true">
+      <div class="modal-dialog custom-modal-size">
+        <div class="modal-content">
+          <div class="modal-header custom-modal-header">
+            <button type="button" class="close custom-close" data-dismiss="modal"
+                    aria-hidden="true">&times;</button>
+            <h4 class="modal-title custom-modal-title">
+               提示
+            </h4>
+          </div>
+          <div class="modal-body  custom-confirm-modal-body" id="promptModalBody">
+
+          </div>
+          <div class="modal-footer  custom-modal-footer">
+            <div class="col-sm-offset-4  col-sm-4 custom-button-col-no-padding">
+              <button type="button" class="btn btn-success btn-lg btn-block" id="promptModalOkBtn"
+                      data-dismiss="modal">
+                确定
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="modalCommon" tabindex="-1" role="dialog" data-backdrop="static"
+         aria-hidden="true">
+      <div class="modal-dialog">
+        <div id="modalCommonContent" class="modal-content">
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" data-backdrop="static"
+         aria-hidden="true">
+      <div class="modal-dialog custom-modal-size">
+        <div class="modal-content">
+          <div class="modal-header custom-modal-header">
+            <h4 class="modal-title custom-modal-title " id="confirmModalTitle">
+            </h4>
+          </div>
+          <div class="modal-body  custom-confirm-modal-body" id="confirmModalBody">
+
+          </div>
+          <div class="modal-footer custom-button-margin custom-modal-footer">
+            <div class="col-sm-10 custom-col-sm-no-padding custom-div-padding-left">
+              <div class="col-sm-6 row pull-left">
+                <button type="button" class="btn  btn-success btn-lg" id="confirmModalOkBtn"
+                        data-dismiss="modal">确定
+                </button>
+              </div>
+              <div class="col-sm-6 row pull-right">
+                <button type="button" class="btn btn-block btn-lg"
+                          data-dismiss="modal">取消
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+    <script src="js/bootstrap-treeview.js"></script>
+    <script src="js/bootstrap-table.js"></script>
+    
+    <script src="js/moment.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/daterangepicker.js"></script>
+    <script src="js/echarts.js"></script>
+    <!-- put your locale files after bootstrap-table.js -->
+    <script src="js/bootstrap-table-zh-CN.js"></script>
+    <script type="text/javascript" src="js/validate/validate.js"></script>
+    <script type="text/javascript" src="js/formutil.js"></script>
+    <script type="text/javascript" src="js/popup_layer.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/ajaxfileupload.js"></script>
+    <script type="text/javascript" src="js/switch.js"></script>
+
+
+
+    <!-- 暂时放这儿调试方便些,后续移走 -->
+    <script type="text/javascript" src="html/staffaccountmanage/staffaccountmanage.js"></script>
+    <script type="text/javascript" src="html/conferenceroom/conferenceroom.js"></script>
+    <script type="text/javascript" src="js/template-debug.js"></script>
+    <script type="text/javascript" src="js/jquery-file-upload/vendor/canvas-to-blob.min.js"></script>
+    <script type="text/javascript" src="js/jquery-file-upload/vendor/jquery.ui.widget.js"></script>
+    <script type="text/javascript" src="js/jquery-file-upload/vendor/load-image.all.min.js"></script>
+    <script type="text/javascript" src="js/jquery-file-upload/jquery.fileupload.js"></script>
+    <script type="text/javascript" src="js/jquery-file-upload/jquery.fileupload-process.js"></script>
+    <script type="text/javascript" src="js/jquery-file-upload/jquery.fileupload-image.js"></script>
+    <script type="text/javascript" src="js/DES3.js"></script>
+    <script type="text/javascript" src="js/jquery.ztree.all-3.5.min.js"></script>
+
+
+    <script type="text/javascript" src="html/conference/conference.js"></script>
+    <link href='css/fullcalendar/fullcalendar.css' rel='stylesheet' />
+    <link href='css/fullcalendar/fullcalendar.print.css' rel='stylesheet' media='print' />
+    <link href='css/fullcalendar/scheduler.css' rel='stylesheet' />
+    <script src='js/moment.js'></script>
+    <script src='js/fullcalendar/fullcalendar.js'></script>
+    <script src='js/fullcalendar/scheduler.js'></script>
+    <!-------------------------------->
+    <script type="text/javascript" src="js/DateFormat.js"></script>
+  </body>
+</html>

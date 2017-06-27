@@ -1,0 +1,74 @@
+
+<div class="row m-ls " >
+  	<div class="col-xs-12  col-xs-12 main">
+    	<span class="m-title m-title-margin">{[licensesetting.html.title]}</span>
+		<div class="panel panel-body m-ls-panel">
+			<form role="form" id="activationForm">
+				<div class="form-group m-ls-group">
+					<label>{[licensesetting.html.license]}</label>
+					<input id="licenseIpt" name="license" type="text" class="form-control"/>
+				</div>
+				<button type="button" onclick="licensesetting.activate()" class="btn btn-yealink btn-default-size m-commit">{[licensesetting.html.active]}</button>
+			</form>
+
+			<form role="form" id="licenseInfoForm" class="m-ls-detailform" hidden>
+				<div class="form-group m-ls-group">
+					<label>{[licensesetting.html.license]}</label>
+					<input id="license" type="text" class="form-control"  readonly>
+				</div>
+				<div class="form-group m-ls-group">
+					<label>{[licensesetting.html.type]}</label>
+					<input id="type" type="text" class="form-control"  readonly>
+				</div>
+				<div class="form-group m-ls-group">
+					<label>{[licensesetting.html.status]}</label>
+					<input id="status" type="text" class="form-control"  readonly>
+				</div>
+				<div class="form-group m-ls-group">
+					<label>{[licensesetting.html.num]}</label>
+					<input id="permissionAmount" type="text" class="form-control"  readonly>
+				</div>
+				<div class="form-group m-ls-group">
+					<label>{[licensesetting.html.effectiveDate]}</label>
+					<input id="validDay" type="text" class="form-control"  readonly>
+				</div>
+				<div class="form-group m-ls-group">
+					<label>{[licensesetting.html.expiryDate]}</label>
+					<input id="expirationDate" type="text" class="form-control"  readonly>
+				</div>
+				<button id="releaseBtn" type="button" onmouseup="licensesetting.releaseConfirm()" class="btn btn-yealink center-block" style="margin-top: 38px">
+					{[licensesetting.html.releaseLicense]}
+				</button>
+				<button id="goActiveBtn" hidden type="button" onmouseup="licensesetting.goActive()" class="btn btn-yealink btn-default-size center-block" style="margin-top: 38px">
+					{[licensesetting.html.useNewLicense]}
+				</button>
+				<button id="goUpdateBtn" hidden type="button" onmouseup="licensesetting.goUpdate()" class="btn btn-yealink btn-default-size center-block" style="margin-top: 38px">
+					{[licensesetting.html.updateLicense]}
+				</button>
+			</form>
+		</div>
+  	</div>
+</div>
+<script type="text/javascript" src="../../js/DateFormat.js"></script>
+<script type="text/javascript" src="html/licensesetting/licensesetting.js"></script>
+
+<script id ="updateLicModalContent" type="text/html">
+	<div class="modal-content">
+		<div class="modal-header" style="height: 40px;">
+			<span class="modal-title" style="font-size: 18px;text-align: center;display: block;position: relative;bottom: 8px;">{[licensesetting.html.updateLicense]}</span>
+		</div>
+		<div class="modal-body" style="padding: 0 68px;">
+			<form role="form" id="updateLicForm" style="margin-top: 36px;margin-bottom: 40px;">
+				<div class="form-group m-ls-group">
+					<label>{[licensesetting.html.license]}</label>
+					<input id="newLicenseIpt" name="licenseIpt" type="text" class="form-control" autocomplete="off"/>
+					<label style="margin-left: 105px">{[licensesetting.html.tips.update]}</label>
+				</div>
+			</form>
+			<div style="margin-left: 110px;margin-bottom: 43px;">
+				<button type="button" class="btn btn-yealink btn-default-size m-commit" onclick="licensesetting.update()">{[global.html.btn.ok]}</button>
+				<button type="button" class="btn btn-yealink-cancel btn-default-size" data-dismiss="modal" style="margin-left: 25px;">{[global.html.btn.cancel]}</button>
+			</div>
+		</div>
+	</div>
+</script>

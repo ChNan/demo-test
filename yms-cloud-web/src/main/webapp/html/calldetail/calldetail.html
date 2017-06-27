@@ -1,0 +1,59 @@
+<div class="row m-cd col-xs-12 main" >
+    <div class="div-title-bar m-title-margin">
+        <span class="m-title">{[calldetail.html.title]}</span>
+        <div class="pull-right g-back">
+            <img src="/img/button/back.png">
+            <div class="g-back-msg">{[system.html.go.back]}</div>
+        </div>
+    </div>
+    <div class="panel panel-body m-cd-summary">
+        <div class="m-cd-logo"></div>
+        <div class="m-cd-info">
+            <div class="m-cd-title g-text-ellipsis" id="cd_title">
+            </div>
+            <div class="m-cd-infoline">
+                <div>
+                    <span>{[calldetail.html.info.type]}</span>
+                    <span id="cd_type"></span>
+                </div>
+                <div name="conf_info">
+                    <span>{[calldetail.html.info.organizer]}</span>
+                    <span id="cd_organizer"></span>
+                </div>
+                <div name="conf_info">
+                    <span>{[calldetail.html.info.participate.count]}</span>
+                    <span id="cd_attendees"></span>
+                </div>
+                <div name="p2p_info">
+                    <span>{[calldetail.html.info.caller.num]}</span>
+                    <span id="cd_caller"></span>
+                </div>
+                <div name="p2p_info">
+                    <span>{[calldetail.html.info.callee.num]}</span>
+                    <span id="cd_callee"></span>
+                </div>
+            </div>
+            <div class="m-cd-infoline">
+                <div style="width: 576px;">
+                    <span>{[calldetail.html.info.time]}</span>
+                    <span id="cd_dateTime"></span>
+                </div>
+                <div>
+                    <span>{[calldetail.html.info.duration]}</span>
+                    <span id="cd_duration"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="attendeeList" hidden>
+        <div class="div-title-bar m-title-margin">
+            <span class="m-title">{[calldetail.html.title.participate]}</span>
+        </div>
+        <div class="panel panel-body">
+            <table id="m-at-table"></table>
+        </div>
+        <input type="hidden" id="confUuid">
+    </div>
+</div>
+<script type="text/javascript" src="html/calldetail/calldetail.js"></script>

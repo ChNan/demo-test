@@ -1,0 +1,123 @@
+<div class="row m-cr col-xs-12 main" >
+    <div class="div-title-bar m-title-margin">
+        <span class="m-title">{[callrecord.html.title.statistics]}</span>
+        <span class="m-title" id="call_query_time"></span>
+    </div>
+    <div class="m-cr-time-option">
+        <a class="option-selected" href="#" onclick="callrecord.queryRecent(event)" month="1">
+            {[callrecord.html.nearly.month.1]}
+        </a>
+        <a href="#" onclick="callrecord.queryRecent(event)" month="3">
+            {[callrecord.html.nearly.month.3]}
+        </a>
+        <a href="#" onclick="callrecord.queryRecent(event)" month="6">
+            {[callrecord.html.nearly.month.6]}
+        </a>
+        <a href="#" onclick="callrecord.queryRecent(event)" month="12">
+            {[callrecord.html.nearly.month.12]}
+        </a>
+    </div>
+    <div class="clearfix">
+        <div class="panel panel-body m-cr-survey pull-left">
+            <!-- 通话概况 -->
+            <div>
+                <div class="m-cr-summary">
+                    <div class="summary-lable">
+                        {[callrecord.html.summary.call]}
+                    </div>
+                    <div>
+                        <span>{[callrecord.html.summary.call.time.count]}</span><br>
+                        <span class="summary-value" id="allcall_count">--</span>
+                    </div>
+                    <div>
+                        <span>{[callrecord.html.summary.call.duration.count]}</span><br>
+                        <span class="summary-value" id="allcall_duration">--</span>
+                    </div>
+                </div>
+                <div>
+                    <table class="table m-cr-calltable">
+                        <thead>
+                            <tr>
+                                <th width="33%">{[callrecord.html.summary.call.tabtitile.type]}</th>
+                                <th width="33%">{[callrecord.html.summary.call.tabtitile.count]}</th>
+                                <th width="34%">{[callrecord.html.summary.call.tabtitile.duration]}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{[callrecord.p2p]}</td>
+                                <td id="count_p2p">--</td>
+                                <td id="duration_p2p">--</td>
+                            </tr>
+                            <tr>
+                                <td class="type">{[callrecord.meetnow]}</td>
+                                <td id="count_meetnow">--</td>
+                                <td id="duration_meetnow">--</td>
+                            </tr>
+                            <tr>
+                                <td class="type">{[callrecord.recurrence]}</td>
+                                <td id="count_recurrence">--</td>
+                                <td id="duration_recurrence">--</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-body m-cr-survey pull-right">
+            <!-- 端口概况 -->
+            <div>
+                <div class="m-cr-summary">
+                    <div class="summary-lable">
+                        {[callrecord.html.summary.port]}
+                    </div>
+                    <div>
+                        <span>{[callrecord.html.summary.port.permission]}</span><br>
+                        <span class="summary-value" id="port_count">--</span>
+                    </div>
+                    <div>
+                        <span>{[callrecord.html.summary.port.max.occur]}</span><br>
+                        <span class="summary-value" id="port_max">--</span>
+                    </div>
+                </div>
+                <div>
+                    <table class="table m-cr-porttable">
+                        <thead>
+                            <tr>
+                                <th width="33%">{[callrecord.html.summary.port.tabtitile.order]}</th>
+                                <th width="33%">{[callrecord.html.summary.port.tabtitile.occur]}</th>
+                                <th width="34%">{[callrecord.html.summary.port.tabtitile.rate]}</th>
+                            </tr>
+                        </thead>
+                        <tbody id="port_statistics_table">
+                            <tr/>
+                            <tr/>
+                            <tr/>
+                            <tr/>
+                            <tr/>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="div-title-bar m-title-margin m-cr-calloperation" style="height: 42px">
+        <span class="m-title" style="margin-right: 50px;">{[callrecord.html.title.record]}</span>
+        <button name="callTypeBtn" type="button" class="btn btn-yealink" quryType="all">{[callrecord.all]}</button>
+        <button name="callTypeBtn" type="button" class="btn btn-default" quryType="p2p">{[callrecord.p2p]}</button>
+        <button name="callTypeBtn" type="button" class="btn btn-default" quryType="meetnow">{[callrecord.meetnow]}</button>
+        <button name="callTypeBtn" type="button" class="btn btn-default" quryType="recurrence">{[callrecord.recurrence]}</button>
+        <span class="input-icon input-icon-right" style="vertical-align: top">
+            <input id="callRecordSearchIpt" type="text" class="form-control" placeholder="{[global.html.search]}" style="width: 300px;height: 34px">
+            <i class="icon-search btn" id="callRecordSearchBtn" onclick="callRecordList.query()" style="top: 3px"></i>
+        </span>
+        <button class="pull-right btn btn-yealink btn-default-size" onclick="callrecord.export()"  type="button">
+            {[callrecord.html.title.record.export]}
+        </button>
+    </div>
+    <div class="panel panel-body">
+        <table id="m-cr-table"></table>
+    </div>
+</div>
+<script type="text/javascript" src="html/callrecord/callrecord.js"></script>

@@ -1,0 +1,354 @@
+<link href="css/chosen.min.css" rel="stylesheet">
+<div class="row m-ts">
+
+    <div class="col-xs-12  col-xs-12 main">
+        <span class="m-title m-title-margin">{[timesetting.html.timezonesetting]}</span>
+
+        <div class="panel panel-body m-df-panel" id="timesettingAllDivid">
+            <form role="form" id="m-times-form">
+                <div class="form-group m-ts-group">
+                    <label>{[timesetting.html.servercurrentime]}</label>
+                    <span name="currentTime"> </span>
+                    <!--<input type="text" name="currentTime" class="form-control" readonly="readonly">-->
+                </div>
+                <div class="form-group m-ts-group">
+                    <label>{[timesetting.html.summer]}</label>
+                    <select name="summerTime" class="form-control">
+                        <option value="0">{[timesetting.html.auto]}</option>
+                        <option value="1" selected="selected">{[timesetting.html.stopusing]}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="display-block m-ns-lt1">{[timesetting.html.waytogettime]}</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" value="0" checked name="timeMethod"> {[timesetting.html.autosycstep]}
+                        </label>
+                    </div>
+                    <div class="m-ts-group m-ts-timemethod0">
+                        <div class="form-group ">
+                            <label>{[timesetting.html.serverdomainname]}</label>
+                            <input type="text" class="form-control" name="timeServer" maxlength="128">
+                        </div>
+                        <div class="form-group">
+                            <label>{[timesetting.html.timezone]}</label>
+                            <select name="timeZone" id="timeZone" class="form-control">
+                                <option value="GMT">
+                                    (GMT+0:00) {[timesetting.html.greentime]}
+                                </option>
+
+                                <option value="Pacific/Apia">
+                                    (GMT+14:00) {[timesetting.html.WesternSamoaSummerTime]}
+                                </option>
+
+                                <option value="HST">
+                                    (GMT-10:00) {[timesetting.html.HawaiiDaylightSavingTime]}
+                                </option>
+
+                                <option value="AST">
+                                    (GMT-8:00) {[timesetting.html.AlaskaSummerTime]}
+                                </option>
+
+                                <option value="America/Los_Angeles">
+                                    (GMT-7:00) {[timesetting.html.pdt]}
+                                </option>
+
+                                <option value="America/Phoenix">
+                                    (GMT-7:00) {[timesetting.html.Mountain]}
+                                </option>
+
+                                <option value="America/Mazatlan">
+                                    (GMT-6:00) {[timesetting.html.Mountain]}
+                                </option>
+
+                                <option value="America/Denver">
+                                    (GMT-6:00) {[timesetting.html.Mountain]}
+                                </option>
+
+                                <option value="America/Belize">
+                                    (GMT-6:00) {[timesetting.html.CentralDaylightSavingTime]}
+                                </option>
+
+                                <option value="America/Chicago">
+                                    (GMT-5:00) {[timesetting.html.CentralDaylightSavingTime]}
+                                </option>
+
+                                <option value="America/Mexico_City">
+                                    (GMT-5:00) {[timesetting.html.CentralDaylightSavingTime]}
+                                </option>
+
+                                <option value="America/Regina">
+                                    (GMT-6:00) {[timesetting.html.CentralDaylightSavingTime]}
+                                </option>
+
+                                <option value="America/Bogota">
+                                    (GMT-5:00) {[timesetting.html.ColombiaDaylightSavingTime]}
+                                </option>
+
+                                <option value="America/New_York">
+                                    (GMT-4:00) {[timesetting.html.EasternDaylightTime]}
+                                </option>
+
+                                <option value="America/Indianapolis">
+                                    (GMT-4:00) {[timesetting.html.EasternDaylightTime]}
+                                </option>
+
+                                <option value="America/Halifax">
+                                    (GMT-3:00) {[timesetting.html.AtlanticDaylightSavingTime]}
+                                </option>
+
+                                <option value="America/Caracas">
+                                    (GMT-4:30) {[timesetting.html.VenezuelaDaylightSavingTime]}
+                                </option>
+
+                                <option value="America/Santiago">
+                                    (GMT-3:00) {[timesetting.html.ChileDaylightSavingTime]}
+                                </option>
+
+                                <option value="America/St_Johns">
+                                    (GMT-2:30) {[timesetting.html.NewfoundlandDaylightSavingTime]}
+                                </option>
+
+                                <option value="America/Sao_Paulo">
+                                    (GMT-3:00) {[timesetting.html.BrasiliaDaylightSavingTime]}
+                                </option>
+
+                                <option value="America/Buenos_Aires">
+                                    (GMT-3:00) {[timesetting.html.ArgentinaDaylightSavingTime]}
+                                </option>
+
+                                <option value="America/Godthab">
+                                    (GMT-2:00) {[timesetting.html.WestGreenlandSummerTime]}
+                                </option>
+
+                                <option value="Atlantic/South_Georgia">
+                                    (GMT-2:00) {[timesetting.html.SouthGeorgiaSummerTime]}
+                                </option>
+
+                                <option value="Atlantic/Azores">
+                                    (GMT+0:00) {[timesetting.html.AzoresSummerTime]}
+                                </option>
+
+                                <option value="Atlantic/Cape_Verde">
+                                    (GMT-1:00) {[timesetting.html.CapeVerdeSummerTime]}
+                                </option>
+
+                                <option value="Africa/Casablanca">
+                                    (GMT+1:00) {[timesetting.html.WesternEuropeanSummerTime]}
+                                </option>
+
+                                <option value="Europe/Dublin">
+                                    (GMT+1:00) {[timesetting.html.Irishdaylightsavingtime]}
+                                </option>
+
+                                <option value="Europe/Berlin">
+                                    (GMT+2:00) {[timesetting.html.CentralEuropeanSummerTime]}
+                                </option>
+
+                                <option value="Europe/Belgrade">
+                                    (GMT+2:00) {[timesetting.html.CentralEuropeanSummerTime]}
+                                </option>
+
+                                <option value="Europe/Paris">
+                                    (GMT+2:00) {[timesetting.html.CentralEuropeanSummerTime]}
+                                </option>
+
+                                <option value="Europe/Warsaw">
+                                    (GMT+2:00) {[timesetting.html.CentralEuropeanSummerTime]}
+                                </option>
+
+                                <option value="ECT">
+                                    (GMT+2:00) {[timesetting.html.CentralEuropeanSummerTime]}
+                                </option>
+
+                                <option value="Europe/Athens">
+                                    (GMT+3:00) {[timesetting.html.EasternEuropeanSummerTime]}
+                                </option>
+
+                                <option value="Europe/Bucharest">
+                                    (GMT+3:00) {[timesetting.html.EasternEuropeanSummerTime]}
+                                </option>
+
+                                <option value="Africa/Cairo">
+                                    (GMT+2:00) {[timesetting.html.EasternEuropeanSummerTime]}
+                                </option>
+
+                                <option value="Africa/Harare">
+                                    (GMT+2:00) {[timesetting.html.CentralAfricanSummerTime]}
+                                </option>
+
+                                <option value="Europe/Helsinki">
+                                    (GMT+3:00) {[timesetting.html.EasternEuropeanSummerTime]}
+                                </option>
+
+                                <option value="Asia/Jerusalem">
+                                    (GMT+3:00) {[timesetting.html.IsraelDaylightSavingTime]}
+                                </option>
+
+                                <option value="Asia/Baghdad">
+                                    (GMT+3:00) {[timesetting.html.ArabSummerTime]}
+                                </option>
+
+                                <option value="Asia/Kuwait">
+                                    (GMT+3:00) {[timesetting.html.ArabSummerTime]}
+                                </option>
+
+                                <option value="Europe/Moscow">
+                                    (GMT+4:00) {[timesetting.html.MoscowSummerTime]}
+                                </option>
+
+                                <option value="Africa/Nairobi">
+                                    (GMT+3:00) {[timesetting.html.EastAfricanSummerTime]}
+                                </option>
+
+                                <option value="Asia/Tehran">
+                                    (GMT+3:30) {[timesetting.html.IranDaylightSavingTime]}
+                                </option>
+
+                                <option value="Asia/Muscat">
+                                    (GMT+4:00) {[timesetting.html.PersianGulfSummerTime]}
+                                </option>
+
+                                <option value="Asia/Baku">
+                                    (GMT+5:00) {[timesetting.html.AzerbaijanDaylightSavingTime]}
+                                </option>
+
+                                <option value="Asia/Kabul">
+                                    (GMT+4:30) {[timesetting.html.AfghanistanDaylightSavingTime]}
+                                </option>
+
+                                <option value="Asia/Yekaterinburg">
+                                    (GMT+6:00) {[timesetting.html.Yekaterinburg]}
+                                </option>
+
+                                <option value="Asia/Karachi">
+                                    (GMT+5:00) {[timesetting.html.PakistanDaylightSavingTime]}
+                                </option>
+
+                                <option value="Asia/Calcutta">
+                                    (GMT+5:30) {[timesetting.html.Indiansummertime]}
+                                </option>
+
+                                <option value="Asia/Katmandu">
+                                    (GMT+5:45) {[timesetting.html.NepalDaylightSavingTime]}
+                                </option>
+
+                                <option value="Asia/Almaty">
+                                    (GMT+6:00) {[timesetting.html.AlmaAta]}
+                                </option>
+
+                                <option value="Asia/Dhaka">
+                                    (GMT+6:00) {[timesetting.html.DaylightSavingTimeinBangladesh]}
+                                </option>
+
+                                <option value="Asia/Colombo">
+                                    (GMT+5:30) {[timesetting.html.Indiansummertime]}
+                                </option>
+
+                                <option value="Asia/Rangoon">
+                                    (GMT+6:30) {[timesetting.html.MyanmarDaylightSavingTime]}
+                                </option>
+
+                                <option value="Asia/Bangkok">
+                                    (GMT+7:00) {[timesetting.html.IndoChinaDaylightSavingTime]}
+                                </option>
+
+                                <option value="Asia/Krasnoyarsk">
+                                    (GMT+8:00) {[timesetting.html.KrasnoyarskDaylightSavingTime]}
+                                </option>
+
+                                <option value="Asia/Hong_Kong">
+                                    (GMT+8:00) {[timesetting.html.HongKongDaylightSavingTime]}
+                                </option>
+
+                                <option value="Asia/Irkutsk">
+                                    (GMT+9:00) {[timesetting.html.IrkutskDaylightSavingTime]}
+                                </option>
+
+                                <option value="Asia/Kuala_Lumpur">
+                                    (GMT+8:00) {[timesetting.html.MalaysiaDaylightSavingTime]}
+                                </option>
+
+                                <option value="Australia/Perth">
+                                    (GMT+8:00) {[timesetting.html.WesternSummerTime]} ({[timesetting.html.Australia]})
+                                </option>
+
+                                <option value="Asia/Taipei" selected>
+                                    (GMT+8:00) {[timesetting.html.ChinaSavingTime]}
+                                </option>
+
+                                <option value="Asia/Tokyo">
+                                    (GMT+9:00) {[timesetting.html.JapanDaylightSavingTime]}
+                                </option>
+
+                                <option value="Asia/Seoul">
+                                    (GMT+9:00) {[timesetting.html.KoreaDaylightSavingTime]}
+                                </option>
+
+                                <option value="Asia/Yakutsk">
+                                    (GMT+10:00) {[timesetting.html.YakutskDaylightSavingTime]}
+                                </option>
+
+                                <option value="Australia/Adelaide">
+                                    (GMT+10:30) {[timesetting.html.CentralDaylightSavingTime]} ({[timesetting.html.SouthAustralia]})
+                                </option>
+
+                                <option value="Australia/Darwin">
+                                    (GMT+9:30) {[timesetting.html.CentralDaylightSavingTime]} ({[timesetting.html.NorthernTerritory]})
+                                </option>
+
+                                <option value="Australia/Brisbane">
+                                    (GMT+10:00) {[timesetting.html.EasternDaylightTime]} ({[timesetting.html.Queensland]})
+                                </option>
+
+                                <option value="Australia/Sydney">
+                                    (GMT+11:00) {[timesetting.html.EasternDaylightTime]} ({[timesetting.html.NewSouthWales]})
+                                </option>
+
+                                <option value="Pacific/Guam">
+                                    (GMT+10:00) {[timesetting.html.Chamorro]}
+                                </option>
+
+                                <option value="Australia/Hobart">
+                                    (GMT+11:00) {[timesetting.html.EasternDaylightTime]} ({[timesetting.html.Tasmania]})
+                                </option>
+
+                                <option value="Asia/Vladivostok">
+                                    (GMT+11:00) {[timesetting.html.Vladivostoksummertime]}
+                                </option>
+
+                                <option value="Pacific/Noumea">
+                                    (GMT+11:00) {[timesetting.html.NewCaledoniaDaylightSavingTime]}
+                                </option>
+
+                                <option value="Pacific/Auckland">
+                                    (GMT+13:00) {[timesetting.html.NewZealandDaylightSavingTime]}
+                                </option>
+
+                                <option value="Pacific/Fiji">
+                                    (GMT+12:00) {[timesetting.html.FijiSummerTime]}
+                                </option>
+
+                                <option value="Pacific/Tongatapu">
+                                    (GMT+13:00) {[timesetting.html.EastCanadaSummerTime]}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="radio">
+                        <label>
+                            <input type="radio" value="1" name="timeMethod"> {[timesetting.html.mannulsetting]}
+                        </label>
+                    </div>
+                    <div class="m-ts-group m-ts-mgl184 m-ts-timemethod1 display-none">
+                        <input type="text" id="m-ts-time" class="form-control" readonly="readonly">
+                    </div>
+                </div>
+                <button id="saveTimes" type="button" class="btn btn-yealink m-commit btn-default-size" style="margin-top: 19px">{[timesetting.html.save]}</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/chosen.jquery.min.js"></script>
+<script type="text/javascript" src="html/timesetting/timesetting.js"></script>

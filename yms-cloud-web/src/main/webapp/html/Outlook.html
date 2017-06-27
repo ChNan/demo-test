@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象 AxOutlookHelper 的 ATL 测试页</title>
+</head>
+<body>
+    <!--
+    <object id="AxOutlookHelper" classid="CLSID:3E4BB54C-1159-41A8-B7AE-E8F4F00635EF"></object>
+    <br />
+        -->
+    <button onclick="Create()">创建会议</button>
+    <br />
+    entry_id
+    <input type="text" id="entry_id"/>
+    <button onclick="Modify()">更改会议</button>
+    <br />
+    <button onclick="PeriodicOutlook()">周期性会议</button>
+    <br />
+    <script type="text/javascript">
+        function Create() {
+            try {
+                // var obj = AxOutlookHelper.CreateItem(1);
+                // var theApp = AxOutlookHelper.OutlookApp;
+
+                var theApp;
+                try {
+                    if (!!window.ActiveXObject || "ActiveXObject" in window) {
+                        theApp = new ActiveXObject("Outlook.Application");
+                    }
+                    else if (navigator.appName == "Netscape") {
+                        var olHelper = document.createElement("object");
+                        olHelper.setAttribute("type", "application/x-itst-activex");
+                        //outlook class id
+                        olHelper.setAttribute("clsid", "{3E4BB54C-1159-41A8-B7AE-E8F4F00635EF}");
+                        document.body.appendChild(olHelper);
+                        theApp = olHelper.OutlookApp;
+                    }
+                    else {
+                        alertPromptMsgDlg("对不起，您使用的浏览器暂时不能支持播放控件，请使用IE, FireFox或者Chrome。",3);
+                        return false;
+                    }
+                }
+                catch (e) {
+                    alertPromptMsgDlg(e.message,3);
+                    return false;
+                }
+                if (theApp == null) {
+                    alertPromptMsgDlg("无法调用Outlook插件",3);
+                    return false;
+                }
+                /*var curTimeZone = theApp.TimeZones.currentTimeZone();
+                console.log(curTimeZone.Bias + "  " + curTimeZone.DaylightDesignation + "  " + curTimeZone.Name);
+
+                for(var i=1; i < theApp.TimeZones.Count; i++) {
+                    var timeZone = theApp.TimeZones.Item(i);
+                    console.log(timeZone.Bias + "  " + timeZone.DaylightDesignation + "  " + timeZone.Name);
+                }
+                return false;*/
+
+                var obj = theApp.CreateItem(1);
+                //安排会议
+                obj.MeetingStatus = 1;
+                //主题
+                obj.Subject = "会议标题";
+                //参与者
+                obj.RequiredAttendees = "fangwq@yealink.com";
+                //会议地点
+                obj.Location = "会议室一";
+                //会议开始时间
+                obj.Start = "12/24/2016 13:30:00";
+                //会议持续时间
+                obj.Duration = 90;
+                //会议内容
+                obj.Save();
+                obj.Body = "GlobalAppointmentID：" + obj.GlobalAppointmentID + "\r\nEntryID：" + obj.EntryID
+                var entry_id = document.getElementById("entry_id");
+                entry_id.value = obj.EntryID;
+
+                obj.display();
+            }
+            catch (e) {
+                alertPromptMsgDlg(e.message,3);
+                return false;
+            }
+        }
+
+        function Modify() {
+            var theApp;
+            try {
+                if (!!window.ActiveXObject || "ActiveXObject" in window) {
+                    theApp = new ActiveXObject("Outlook.Application");;
+                }
+                else if (navigator.appName == "Netscape") {
+                    var olHelper = document.createElement("object");
+                    olHelper.setAttribute("type", "application/x-itst-activex");
+                    //outlook class id
+                    olHelper.setAttribute("clsid", "{3E4BB54C-1159-41A8-B7AE-E8F4F00635EF}");
+                    document.body.appendChild(olHelper);
+                    theApp = olHelper.OutlookApp;
+                }
+                else {
+                    alertPromptMsgDlg("对不起，您使用的浏览器暂时不能支持播放控件，请使用IE, FireFox或者Chrome。",3);
+                    return false;
+                }
+            }
+            catch (e) {
+                alertPromptMsgDlg(e.message,3);
+                return false;
+            }
+            if (theApp == null) {
+                alertPromptMsgDlg("无法调用Outlook插件",3);
+                return false;
+            }
+
+            var ns = theApp.GetNamespace("MAPI");
+            var entry_id = document.getElementById("entry_id");
+            var obj = ns.GetItemFromID(entry_id.value);
+            obj.Body = obj.Body + "\r\nEntryID：" + obj.EntryID;
+            /*obj.MeetingStatus = 5;*/
+            obj.RequiredAttendees = ""; // 修改对应的联系人，删除则对应的会取消会议
+            obj.display();
+        }
+
+        function PeriodicOutlook() {
+            try {
+                var OutlookApp;
+                if (!!window.ActiveXObject || "ActiveXObject" in window) {
+                    OutlookApp = new ActiveXObject("Outlook.Application");;
+                }
+                else if(navigator.appName == "Netscape") {
+                    var theApp = document.createElement("object");
+                    theApp.setAttribute("type", "application/x-itst-activex");
+                    //outlook class id
+                    theApp.setAttribute("clsid", "{3E4BB54C-1159-41A8-B7AE-E8F4F00635EF}");
+                    document.body.appendChild(theApp);
+                    OutlookApp = theApp.OutlookApp;
+                }
+                else{
+                    alertPromptMsgDlg("对不起，您使用的浏览器暂时不能支持播放控件，请使用IE, FireFox或者Chrome。",3);
+                    return false;
+                }
+                if (OutlookApp == null) {
+                    alertPromptMsgDlg("无法调用Outlook插件",3);
+                    return false;
+                }
+
+                var MeetingItem = OutlookApp.CreateItem(1);
+                MeetingItem.MeetingStatus = 1;
+                MeetingItem.Subject = "会议标题";
+                MeetingItem.RequiredAttendees = "fangwq@yealink.com";
+                MeetingItem.Location = "会议室一";
+                MeetingItem.Body = "测试会议\r\nGlobalAppointmentID：" + MeetingItem.GlobalAppointmentID + "\r\nEntryID：" + MeetingItem.EntryID
+
+                //周期设置
+                var recTm = MeetingItem.GetRecurrencePattern();
+
+                /**
+                 * 周几：https://msdn.microsoft.com/en-us/library/ff864454.aspx
+                 *   周天：0x01, 周一：0x02, 周二：0x04 ... 周六：0x64
+                 * 每个月：
+                 */
+                /**
+                 * 重复周期类型
+                 * 0：每天
+                 * 1：每周
+                 * 2：每月
+                 * 3：每几个月
+                 * 5：每年
+                 * 6：每几年
+                 */
+                recTm.RecurrenceType = 1;
+                recTm.DayOfWeekMask = 62;
+                recTm.Interval = 1;
+                recTm.StartTime = "12/24/2016 1:00:00 PM";
+                recTm.PatternStartDate = "12/25/2016 1:30:00 PM";
+                recTm.Duration = 90;
+                recTm.NoEndDate = true;
+                MeetingItem.Save();
+
+                var entry_id = document.getElementById("entry_id");
+                entry_id.value = MeetingItem.EntryID;
+
+                MeetingItem.display();
+            }
+            catch(e){
+                alertPromptMsgDlg(e.message,3);
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>

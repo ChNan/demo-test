@@ -1,0 +1,551 @@
+
+	<nav class="navbar navbar-inverse navbar-fixed-top g-menu" role="navigation" style="z-index:1040;">
+	    <div class="container-fluid">
+	        <div class="navbar-header">
+	            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+	                <span class="sr-only">Toggle navigation</span>
+	                <span class="icon-bar"></span>
+	                <span class="icon-bar"></span>
+	                <span class="icon-bar"></span>
+	            </button>
+	            <a class="navbar-brand m-logo" href="/main"><img src="/img/main/menu/logo_ch.png"></a>
+	        </div>
+	        <div id="navbar" class="navbar-collapse collapse" aria-expanded="false">
+	            <ul class="nav navbar-nav navbar-right">
+	                <li class="dropdown">
+	                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">{[conference.html.simplechinese]} <span class="caret"></span></a>
+	                    <ul class="dropdown-menu c-lan" role="menu">
+	                        <li data-val="zh-CN"><a href="#">{[conference.html.simplechinese]}</a></li>
+	                        <li data-val="en-US"><a href="#">{[conference.html.english]}</a></li>
+	                    </ul>
+	                </li>
+	                <li class="dropdown g-account-dropdown">
+	                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span id="account_name"></span></a>
+						<span class="caret"></span>
+	                    <ul class="dropdown-menu" role="menu">
+		                    <li><a href="javascript:void(0);" onclick="accountmanage.readyChangePwdConferencePage('account_manage_content')">{[conference.html.changepwd]}</a></li>
+	                        <li><a href="javascript:void(0);"  onclick="accountmanage.readyChangeMailConferencePage('account_manage_content')">{[conference.html.changeemail]}</a></li>
+	                        <li><a href="/logout">{[conference.html.checkout]}</a></li>
+	                    </ul>
+	                </li>
+	            </ul>
+	            <span class="m-com-name pull-right" id="enterprise_name" style="position:inherit;clear: right;margin-top:25px;"></span>
+	        </div>
+	    </div>
+	</nav>
+	
+	<div class="g-main"  style="padding: 25px 25px 0px 25px;">
+		<p>&lt; <a href="javascript:void(0);" style="color:#00BEEB;" id="return_to_main">{[conference.html.return]}</a> &lt; {[conference.html.ccontrol]}</p>
+
+
+		<div class="panel panel-default">
+			<div class="panel-heading" style="background-color: #fff;height: 100px;padding:19px 40px 0px 40px;" >
+				<div class="line1">
+					<div class="sp1" style="width: 100%;font-size: 18px;">
+						<span id="conference_subject" style="font-size:18px;display: inline-block;max-width: 1500px;
+						overflow: hidden;white-space: nowrap;text-overflow: ellipsis"></span>
+						<div class="lock_tag" style="float:right;"></div>
+					</div>
+					<div class="sp3">
+						<span>{[conference.html.conference]}
+							<span id="conference_number"></span>
+						</span>
+						<span>{[conference.html.conferencepwd]}
+							<span id="conference_pinCode"></span>
+						</span>
+						<span>{[conference.html.time]}
+							<span id="conference_timeBucket" > </span>
+							
+						</span>
+						<span>
+						{[conference.html.modal]}
+						</span>
+						<span id="profile_display" style="margin-left:3px;"></span>
+						<div class="pull-right">
+							<span >{[conference.html.pepole]}
+								<span id="conference_participant_num" style="color:#6CC2F6;margin:0px 0px 0px 3px;"></span>
+							</span>
+							<span style="margin-left:20px;">{[conference.js.incontinue]}
+								<span id="conference_time_use" style="color:#6CC2F6;margin:0px 3px 0px 3px;"></span>
+							</span>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<div id="main_panel  m-cp-main"  style="padding:15px 40px 30px 40px;">
+				<div class="line2">
+					<div id="search_input_box" style="width:300px; margin-right:10px;height:36px;padding:1px 0px 0px 10px;border-radius: 0px;" class="search-box">
+						<input class="form-control" maxlength="16" id="search_input" title="{[conference.html.inputsearch]}"
+							   placeholder="{[conference.html.inputsearch]}" type="text" style="height:30px;padding-right: 33px;">
+						<span class="searchbox-icon"><i class="glyphicon glyphicon-search"></i></span>
+					</div>
+					<div class="pull-right">
+						<button type="button" class="btn btn-danger " id="btn_mute_all" style="display:none;"><img src="img/mute.png" data-pin-nopin="true"> {[conference.html.muteall]}</button>
+						<button type="button" class="btn btn-yealink " id="btn_unmute_all" style="display:none;"><img src="img/unmute.png">{[conference.html.unmute]}  </button>
+						<button type="button" class="btn btn-yealink " id="btn_invite"><img src="img/add-white.png" data-pin-nopin="true">{[conference.html.invite]}</button>
+						<button type="button" class="btn btn-yealink " id="btn_lock" style="display:none;"> <img src="img/lock.png" data-pin-nopin="true">{[conference.html.lock]} </button>
+						<button type="button" class="btn btn-yealink " id="btn_unlock" style="display:none;"> <img src="img/unlock.png">{[conference.html.Unlock]}</button>
+						<button type="button" class="btn btn-yealink " id="btn_layout" style="display:none;"><img src="img/layout.png"> {[conference.html.Layout]} </button>
+						<button type="button" class="btn btn-danger " style="margin-right: 0px;" id="btn_exit"><img src="img/exite.png"> {[conference.html.checkout]} </button>
+					</div>
+				</div>
+				<div id="participants">
+					<table class="table" style="border: 0px;">
+						<tbody>
+							<tr>
+								<td style="width: 112px;padding: 0px;background-color: #afd7ea ">
+									<div style="background-color: #5fb0d5;height: 36px;">
+
+									</div>
+									<span class="tbtitle">{[conference.html.host]}</span>
+									<span style="width:100%;display:block;font-weight:bold;color:#00628f;text-align: center;" id="presenter_list_num"></span>
+								</td>
+								<td style="width: 2px;padding: 0px;">
+								</td>
+								<td style="padding: 0px;;">
+									<table class="table table-hover" style="padding: 0px;margin-bottom: 0px;border: 0px;">
+										<thead>
+											<tr style="background-color: #5fb0d5;color: white" class="split-td">
+												<td style="width:25%;height: 34px; min-width:220px;" colspan="2" ><span style="margin-left:14px"></span>{[conference.html.nandc]}</td>
+												<td style="min-width: 100px;width:100px;"><span style="margin-left:14px"></span>{[conference.html.AA.title]}</td>
+												<td style="width:700px;min-width:555px;"><span style="margin-left:14px"></span>{[conference.html.CC]}</td>
+												<td style="width: auto;min-width:150px;"><span style="margin-left:14px"></span>{[conference.html.device]}</td>
+											</tr>
+										</thead>
+										<tbody id="presenter_list" class="td-vert-md">
+										</tbody>
+									</table>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<table class="table" style="border: 0px;">
+						<tbody>
+						<tr>
+							<td style="width: 112px;padding: 0px;background-color: #afd7ea ">
+								<span class="tbtitle">{[conference.html.partition]}</span>
+								<span style="width:100%;display:block;font-weight:bold;color:#00628f;text-align: center;" id="attendee_list_num"></span>
+							</td>
+							<td style="width: 2px;padding: 0px;">
+							</td>
+							<td style="padding: 0px;;">
+								<table class="table table-hover" style="padding: 0px;margin-bottom: 0px;border: 0px;">
+									<thead>
+										<tr>
+										<td style="width:25%;padding: 0px;min-width:220px;" colspan="2"></td>
+										<td style="min-width:100px;width:100px;padding: 0px;"></td>
+										<td style="width:700px;padding: 0px;min-width:555px;"></td>
+										<td style="width:auto;padding: 0px;min-width:150px;"></td>
+										</tr>
+									</thead>
+									<tbody id="attendee_list" class="td-vert-md">
+									</tbody>
+								</table>
+							</td>
+						</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<div id="server_mail" style="z-index: 1030;display: none;position:absolute;top:80px;left:0px;width:100%;padding: 30px 25px 0px 25px; background-color: #f2f2f2;">
+		<p>&lt; <a href="javascript:void(0);" style="color:#00BEEB;" id="server_mail_return">{[conference.html.return]}</a> &lt; {[conference.html.backgroundemail]}</p>
+		<table class="mail_table" >
+			<tr>
+				<td width="auto">
+					<div>
+						<div style="width:100%;" class="clearfix">
+							<div class="mail_left_title">{[conference.html.receiver]}<span style="color:red;">*</span>:</div>
+							<div id="mail_targets" class="mail_content_right" style="border: 1px solid #dddddd;background-color: white;">
+								<div class="mail_targets_margin_last"></div>
+							</div>
+						</div>
+						<div style="width:100%;" class="clearfix"><div class="mail_left_title">{[conference.html.remark]}:</div>
+			                <div class="mail_content_right">
+		                        <textarea name="editor_mail_content" id="editor_mail_content" rows="10" cols="80">
+		                        </textarea>
+			                </div>
+	                	</div>
+					</div>
+				</td>
+				<td width="355">
+					<div >
+						<span>{[conference.html.businessconc]}</span>
+						<div class="col-left" id="search_email_div">
+                            <div style="width:100%" class="search-box">
+                                <input class="form-control" maxlength="256" id="search_mail_input" title="{[conference.html.inputsearch]}" placeholder="{[conference.html.inputsearch]}" type="text">
+                                <span class="searchbox-icon"><i class="glyphicon glyphicon-search"></i></span>
+                            </div>
+                        </div>
+                        <div id="staffMailListDiv" style="margin-top:5px;height:auto;overflow: auto;border-color: #dddddd;">
+							<ul id="staffMailList" class="list-group">
+							</ul>
+						</div>
+					</div>
+				</td>
+			</tr>
+		</table>
+		<div class="modal-footer custom-modal-footer" style="border:0;padding-top:20px;">
+            <div class="col-sm-offset-4 col-xs-2 ">
+                <button type="button" class="btn btn-success" id="save" onclick="sendInviteMail();">
+                    {[conference.html.submit]}
+                </button>
+            </div>
+             <div class="col-xs-2">
+                <button type="button" class="btn btn-block btn-default" onclick="return_mail_ui();">
+                    {[conference.html.cancle]}
+                </button>
+            </div>
+        </div>
+	</div>
+	<!-- {[]} -->
+	<div class="modal fade" id="promptModal" tabindex="-1" role="dialog" data-backdrop="static"
+	     hidden="true">
+	    <div class="modal-dialog custom-modal-size">
+	        <div class="modal-content">
+	            <div class="modal-body  custom-confirm-modal-body" >
+	
+	            </div>
+	        </div>
+	    </div>
+	</div>
+	
+	<div class="modal fade" id="promptModalWithbtn" tabindex="-1" role="dialog" data-backdrop="static"
+	     hidden="true">
+	    <div class="modal-dialog custom-modal-size">
+	        <div class="modal-content">
+	            <div class="modal-header custom-modal-header">
+	            <button type="button" class="close custom-close" data-dismiss="modal"
+	            aria-hidden="true">&times;</button>
+	            <h4 class="modal-title custom-modal-title">
+	            {[conference.html.hint]}
+	            </h4>
+	            </div>
+	            <div class="modal-body  custom-confirm-modal-body">
+	
+	            </div>
+	            <div class="modal-footer  custom-modal-footer">
+	            <div class="col-sm-offset-4  col-sm-4 custom-button-col-no-padding">
+	            <button type="button" class="btn btn-success btn-lg btn-block m-close" id="promptModalOkBtn"
+	            data-dismiss="modal">
+	            {[conference.html.sure]}
+	            </button>
+	            </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+	
+	<div class="modal fade" id="modalCommon" tabindex="-1" role="dialog" data-backdrop="static"
+	     aria-hidden="true">
+	    <div class="modal-dialog">
+	        <div id="modalCommonContent" class="modal-content">
+	        </div>
+	    </div>
+	</div>
+	
+	<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" data-backdrop="static"
+	     aria-hidden="true">
+	    <div class="modal-dialog custom-modal-size">
+	        <div class="modal-content">
+	            <div class="modal-header custom-modal-header">
+	                <button type="button" style="margin-top: -6px;" class="close custom-close" data-dismiss="modal"
+	                        aria-hidden="true">&times;</button>
+	                <h4 class="modal-title custom-modal-title " style="margin-top: -4px;" id="confirmModalTitle"></h4>
+	            </div>
+	            <div class="modal-body  custom-confirm-modal-body" id="confirmModalBody">
+	
+	            </div>
+	            <div class="modal-footer custom-modal-footer">
+	                <button type="button" class="btn   btn-success btn-lg" id="confirmModalOkBtn"
+	                        data-dismiss="modal">{[conference.html.sure]}
+	                </button>
+	                <button type="button" style="margin-left: 15px;" class="btn btn-block btn-lg"
+	                        data-dismiss="modal">{[conference.html.cancle]}
+	                </button>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+	<div class="modal fade" data-backdrop="static" data-keyboard="false"
+	     aria-hidden="true" id="modalProgressBar">
+	    <div class="modal-dialog div-progress-bar-dialog-location custom-modal-size">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	                <h4 class="modal-title custom-modal-title custom-no-padding-left" id="progressBarTitle">
+	                </h4>
+	            </div>
+	            <div class="modal-body">
+	                <div class="progress progress-striped active">
+	                    <div class="progress-bar progress-bar-success div-progress-bar-dialog-body" role="progressbar">
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+	<div class="modal fade" id="choose_layout" tabindex="-1" role="dialog" data-backdrop="static"
+	     aria-hidden="true">
+	    <div class="modal-dialog" style="width:865px;">
+	        <div class="modal-content">
+	        	<div class="modal-header custom-modal-header">
+                <button type="button" class="close custom-close" data-dismiss="modal"
+                        aria-hidden="true">&times;</button>
+					<h4 class="modal-title custom-modal-title " >
+						{[conference.html.chooselayout]}
+					</h4>
+				</div>
+				<div class="modal-body" style="border:#dddddd solid 1px; height:410px;margin:20px 20px 20px 20px;">
+					<a id="layout_exclusive" href="javascript:void(0);" class="chs_layout layout1 layout1_left" layout="Exclusive" viewNum="1">{[conference.html.covermode]}</a>
+					<a href="javascript:void(0);" class="chs_layout layout2" layout="Equality" viewNum="49">{[conference.html.midmode]}</a>
+					<a href="javascript:void(0);" class="chs_layout layout3" layout="SpeechExcitation" viewNum="8">{[conference.html.mode]}</a>
+				</div>
+				<div class="modal-footer custom-modal-footer">
+					<div class="col-sm-12 custom-col-sm-no-padding">
+						<div class="col-sm-6 row pull-left">
+							<button type="button" class="btn  btn-success btn-lg"
+								id="chooseLayoutOkBtn" data-dismiss="modal">{[conference.html.sure]}</button>
+						</div>
+						<div class="col-sm-6 row pull-right">
+							<button type="button" class="btn btn-block btn-lg" style="border:#dddddd solid 1px"
+								data-dismiss="modal">{[conference.html.cancle]}</button>
+						</div>
+					</div>
+				</div>
+	        </div>
+	    </div>
+	</div>
+	<div class="modal fade" id="choose_demonstrator" tabindex="-1" role="dialog" data-backdrop="static"
+	     aria-hidden="true">
+	    <div class="modal-dialog" style="width:856px;height:400px;">
+	        <div class="modal-content">
+	        	<div class="modal-header custom-modal-header">
+                <button type="button" class="close custom-close" data-dismiss="modal"
+                        aria-hidden="true">&times;</button>
+					<h4 class="modal-title custom-modal-title " >
+						{[conference.html.simmode]}
+					</h4>
+				</div>
+				<div id="choose_demonstrator_list" class="modal-body  custom-confirm-modal-body"
+					style="border:#dddddd solid 1px; width:820px;height:240px;margin-top:18px; margin-left:18px;overflow: auto; padding:18px;">
+					
+				</div>
+				<div class="modal-footer">
+					<div class="col-sm-12">
+						<div class="col-sm-4 pull-left">
+							<button type="button" class="btn  btn-success btn-lg"
+								id="chooseDemonOkBtn" data-dismiss="modal">{[conference.html.sure]}</button>
+						</div>
+						<div class="col-sm-4 pull-right">
+							<button type="button" class="btn btn-block btn-lg" style="border:#dddddd solid 1px"
+								data-dismiss="modal">{[conference.html.cancle]}</button>
+						</div>
+					</div>
+				</div>
+	        </div>
+	    </div>
+	</div>
+	<div class="modal fade" id="hand_confirm" tabindex="-1" role="dialog" data-backdrop="static"
+	     aria-hidden="true">
+	    <div class="modal-dialog">
+	        <div class="modal-content">
+	        	<div class="modal-header custom-modal-header">
+                <button type="button" class="close custom-close" data-dismiss="modal"
+                        aria-hidden="true">&times;</button>
+					<h4 class="modal-title custom-modal-title " >
+						{[conference.html.pword]}
+					</h4>
+				</div>
+				<div class="modal-body  custom-confirm-modal-body" style="height:340px;">
+					<div class="col-sm-10 custom-col-sm-no-padding custom-div-padding-left">
+						<div style="margin-bottom:45px;font-size:18px;"><span id="hand_requester_name" style="font-size:18px;"></span> {[conference.html.pword]}</div>
+						<div class="col-sm-10 row col-sm-offset-2" style="margin-bottom:20px;">
+							<button type="button" class="btn  btn-success btn-lg"
+								id="handOkBtn" data-dismiss="modal">{[conference.html.allow]}</button>
+						</div>
+						<div class="col-sm-10 row col-sm-offset-2" style="margin-bottom:20px;">
+							<button type="button" class="btn  btn-block btn-lg" style="border:#dddddd solid 1px"
+								id="handCancelBtn" data-dismiss="modal">{[conference.html.refuse]}</button>
+						</div>
+						<div class="col-sm-10 row col-sm-offset-2" style="margin-bottom:20px;">
+							<button type="button" class="btn btn-block btn-lg" style="border:#dddddd solid 1px"
+								data-dismiss="modal">{[conference.html.ignore]}</button>
+						</div>
+					</div>
+				</div>
+	        </div>
+	    </div>
+	</div>
+	<div class="modal fade" id="presenter_exit_confirm" tabindex="-1" role="dialog" data-backdrop="static"
+	     aria-hidden="true">
+	    <div class="modal-dialog">
+	        <div class="modal-content">
+	        	<div class="modal-header custom-modal-header">
+                <button type="button" class="close custom-close" data-dismiss="modal"
+                        aria-hidden="true">&times;</button>
+					<h4 class="modal-title custom-modal-title " >
+						{[conference.html.offconference]}
+					</h4>
+				</div>
+				<div class="modal-body  custom-confirm-modal-body" style="height:350px;">
+					<div class="col-sm-12 custom-div-padding-left">
+						<div style="margin-bottom:45px;font-size:18px;">{[conference.html.inorout]}？</div>
+						<div class="col-sm-10" style="margin-bottom:20px;">
+							<button type="button" class="btn  btn-success btn-lg" style="width:300px;"
+								id="presenterFinishBtn" data-dismiss="modal">{[conference.html.endco]}</button>
+						</div>
+						<div class="col-sm-10" style="margin-bottom:20px;">
+							<button type="button" class="btn  btn-block btn-lg" style="border:#dddddd solid 1px;width:300px;"
+								id="presenterExitBtn" data-dismiss="modal">{[conference.html.offco]}</button>
+						</div>
+						<div class="col-sm-10" style="margin-bottom:20px;">
+							<button type="button" class="btn btn-block btn-lg" style="border:#dddddd solid 1px;width:300px;"
+								data-dismiss="modal">{[conference.html.cancle]}</button>
+						</div>
+					</div>
+				</div>
+	        </div>
+	    </div>
+	</div>
+	<input type="hidden" id="selectExternalParticipantIds"/>
+    <input type="hidden" id="selectParticipantIds"/>
+    <input type="hidden" id="selectParticipantMails"/>
+    <input type="hidden" id="selectPresenterIds"/>
+	<input type="hidden" id="selectPresenterMails"/>
+    <input type="hidden" id="projectContext" value=""/>
+	<div class="col-xs-12 main m-cp-main " id="invite_participant" hidden="true">
+    </div>
+<div class="modal fade" id="add_participant_modal" tabindex="-2" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width:855px;">
+        <div class="modal-content">
+            <div class="modal-header custom-modal-header">
+                <button type="button" class="close custom-close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 id="add_participant_title" class="modal-title custom-modal-title">{[conference.html.inviteco]}</h4>
+            </div>
+            <div>
+            	<ul id="invite_title_tab">
+                	<li><a href="#invite_tab1" role="tab" data-toggle="tab">{[conference.html.emailinvite]}</a></li>
+                	<li  class="active"><a href="#invite_tab2" role="tab" data-toggle="tab">{[conference.html.contantinvite]}</a></li>
+                </ul>
+	            <div id="invite_tab1" style="display:none;">
+					<div style="position:absolute;top:113px;left:50%;margin-left:-320px;width: 670px;">
+						<div id="invite_a_remind" style="display:none;color:white;font-size:18px;border-radius: 9px;
+							background-color:gray;border:0;-moz-border-radius: 9px;-webkit-border-radius: 9px;
+							margin-left: auto;margin-right: auto;padding:10px 30px 10px 30px;text-align: center;">
+							{[conference.html.downhint]}
+						</div>
+					</div>
+	            	<div style=" border:1px solid #CCCCCC;height:460px;padding-top:150px;padding-left:210px;">
+		            	<a id="invite_a">{[conference.html.localemail]}</a>
+		            	<a id="invite_b" href="javascript:void(0);">{[conference.html.sysbemail]}</a>
+	            	</div>
+	            	<div class="modal-footer  custom-modal-footer">
+		                <div class="col-xs-10 custom-col-xs-no-padding" style="padding-top:20px;">
+		                    <div class="col-xs-5 pull-left custom-col-xs-no-padding">
+		                        <button id="btn_clipboard" type="button"
+										style="width:260px;height:48px;padding-left:1px;text-align:left;font-size:18px;
+												border: 0;background-color: transparent;float:left;color:#2ea9e9;text-decoration: underline;"
+		                                data-dismiss="modal">{[conference.html.copyinvite]}
+		                        </button>
+		                    </div>
+		                    <div class="col-xs-5 pull-right">
+		                        <button type="button" class="btn btn-lg btn-default btn-block" style="height:48px;font-size:18px; float:right;"
+		                                data-dismiss="modal">{[conference.html.cancle]}
+		                        </button>
+		                    </div>
+		                </div>
+		            </div>
+	            </div>
+	            <div id="invite_tab2" >
+	            <div class="modal-body">
+	                <div class="tab-content head-margin">
+	                    <div class="tab-pane fade in active" id="staff">
+	                        <div class="row row-margin">
+	                            <div class="col-xs-6 col-left" id="search_staff_div">
+	                                <div style="width:100%" class="search-box">
+	                                    <input class="form-control" maxlength="256" id="search_staff" title="{[conference.html.inputsearch]}" placeholder="{[conference.html.inputsearch]}" type="text">
+	                                    <span class="searchbox-icon"><i class="glyphicon glyphicon-search"></i></span>
+	                                </div>
+	                                <div class="select_content" id="result_div" style="width:95%;overflow: auto;">
+	                                    <ul id="result_ul">
+	                                    </ul>
+	                                </div>
+	                                <div class="tree-container" style="height: 420px;border: 1px solid #ddd;overflow: auto;" id="staff_list_container">
+	                                    <ul id="participant_staff_list_ul" class="ztree"></ul>
+	                                </div>
+	                            </div>
+	                            <div class="col-xs-6" style="padding-right: 15px;">
+	                                <div style="padding-left: 0;padding-right: 0;border: 1px solid #ddd">
+	                                    <div style="line-height:34px;">
+	                                        <div class="col-xs-12">{[conference.html.hadmember]}<span id="select_count"></span></div>
+	                                    </div>
+	                                    <div class="list-container" style="height:420px;width:394px;border:0;">
+	                                        <ul id="selected_staff" class="ztree" size="20" style="width:100%;">
+	                                        </ul>
+	                                    </div>
+	                                </div>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	            <div class="modal-footer  custom-modal-footer" style="padding-bottom:42px;">
+	                <div class="col-xs-10 custom-div-padding-left" style="padding-top:5px;" >
+	                    <div class="col-xs-5 pull-left">
+	                        <button type="button" class="btn btn-success btn-lg btn-block" id="confirmSelectStaff" style="height:48px;font-size:18px;"
+	                                data-dismiss="modal">{[conference.html.invite]}
+	                        </button>
+	                    </div>
+	                    <div class="col-xs-5 pull-right">
+	                        <button type="button" class="btn btn-lg btn-default btn-block" style="height:48px;font-size:18px;"
+	                                data-dismiss="modal">{[conference.html.cancle]}
+	                        </button>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+        	</div>
+        </div>
+    </div>
+</div>
+<div id="account_manage_content" style="position: absolute; background: rgb(255, 255, 255) none repeat scroll 0% 0%; width: 100%; height: 100%; z-index: 999; margin-top: 30px; display: none;">
+</div>
+
+<script type="text/plain" id="inviteMailBody_cn">
+您好!
+{{currentOperator.name}} 邀请您参与视频会议
+主题：{{subject}}
+时间：{{timeBucket}}
+ID：{{conferenceNumber}}{{if pinCode!="无"}}
+密码：{{pinCode}}{{/if}}
+
+入会方式：
+1) 接收到会议推送的设备,可在设备上直接“一键入会”直接加入会议；
+2) 已注册上Yealink Meeting Server的设备，请根据语音提示输入会议ID {{conferenceNumber}}{{if pinCode!="无"}}和会议密码{{pinCode}}{{/if}}，并以#号键结束；
+3) 未注册上Yealink Meeting Server的设备，请先拨打{{freeSwitchIp}}，根据语音提示输入会议ID {{conferenceNumber}}{{if pinCode!="无"}}和会议密码{{pinCode}}{{/if}}，并以#号键结束；
+4) 通过SIP终端拨打{{conferenceNumber}}**{{if pinCode!="无"}}{{pinCode}}{{/if}}@{{freeSwitchIp}}直接加入会议。
+
+亿联团队 www.yealink.com.cn
+</script>
+
+<script type="text/plain" id="inviteMailBody_en">
+Hello
+{{currentOperator.name}} invite you to join video conference
+Subject :{{subject}}
+Time :{{timeBucket}}
+ID :{{conferenceNumber}}{{if pinCode!='Null'}}
+Password :{{pinCode}}{{/if}}
+
+The way to join conference :
+1) One-button to join conference from Yealink VC device which receives conference reminder;
+2) The device which has registered YMS account, please follow the voice prompt to enter conference ID {{conferenceNumber}} {{if pinCode!='Null'}}& password {{pinCode}}{{/if}}, and end with # key;
+3) The device which hasn't registered YMS account, please dial {{freeSwitchIp}} first, then follow the voice promp to enter conference ID {{conferenceNumber}}{{if pinCode!='Null'}} & password {{pinCode}}{{/if}}, and end with # key;
+4) To join from a SIP device, please dial {{conferenceNumber}}**{{if pinCode!='Null'}}{{pinCode}}{{/if}}@{{freeSwitchIp}} and join the conference.
+
+Yealink Team www.yealink.com
+</script>

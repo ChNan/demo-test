@@ -1,0 +1,81 @@
+
+<div class="row m-tl" id="termlogAllDivId">
+    <div class="col-xs-12  col-xs-12 main">
+        <div class="div-title-bar m-title-margin">
+            <span class="m-title">{[termlog.html.Terminallog]}</span>&nbsp;&nbsp;
+            <span style="font-size: 14px;">
+                <input type="checkbox" id="isStartTerminalLog" name="isStartTerminalLog" value="true">
+                <label for="isStartTerminalLog" style="margin-right: 3px">{[termlog.html.Enabled]}</label>
+            </span>
+        </div>
+
+
+        <div class="panel panel-body">
+
+            <div class="cover-div display-none"></div>
+            <div id="terminalLogBodyDiv">
+                <!-- {[]} {[]} {[]} -->
+                <div class="toolbar-group">
+                    <select class="form-control" name="termModelType" id="termModelType">
+                        <option value="">{[termlog.html.Allmodels]}</option>
+                    </select>
+                    &nbsp;&nbsp;
+                    <select class="form-control" name="termStatus" id="termStatus">
+                        <option value="">{[termlog.html.Allstatus]}</option>
+                        <option value="online">{[termlog.html.inline]}</option>
+                        <option value="offline">{[termlog.html.offline]}</option>
+                    </select>
+                    &nbsp;&nbsp;
+                <span class="input-icon input-icon-right pull-right" style="width: 300px;height: 34px">
+                    <input type="text" class="form-control m-sl-time" id="termUserName" name="termUserName" placeholder="{[termlog.html.input]}" style="width: 300px;height: 34px"/>
+                    <i class="icon-search btn" id="userSearchBtnSearch" onclick="termlog.terminalSearch()" style="top: 3px"></i>
+                </span>
+                </div>
+                <table id="m-tl-table"></table>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="m-tl-dl">
+    <div class="modal-dialog" style="width:500px;">
+        <div class="modal-content" style="height: 270px">
+            <div id="progressBarFooter" class="modal-header"
+                 style="text-align:center;font-size:18px;padding:5px;">
+                <span style="color: white">{[termlog.html.Exporttheterminallog]}</span>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <div class="form-group" style="padding-left: 50px;">
+                        <input type="hidden" name="selectedTermForDown" id="selectedTermForDown"/>
+                        <div style="margin-bottom: 10px;margin-top: 10px">{[termlog.html.checklog]}</div>
+                        <div style="margin-bottom: 10px;">
+                            <a class="sys-log-a" id="termlog1Sel" style="cursor:pointer"
+                               href="javascript:termlog.exportTimeSel('termlog1Sel', 1, 'termLogTimeSelectZone')">{[termlog.html.today]}</a>&nbsp;&nbsp;&nbsp;
+                            <a id="termlog3Sel" class="sys-log-a-notselected"
+                               href="javascript:termlog.exportTimeSel('termlog3Sel', 3, 'termLogTimeSelectZone')">{[termlog.html.close3]}</a>&nbsp;&nbsp;&nbsp;
+                            <a id="termlog7Sel" class="sys-log-a-notselected"
+                               href="javascript:termlog.exportTimeSel('termlog7Sel', 7, 'termLogTimeSelectZone')">{[termlog.html.close7]}</a>&nbsp;&nbsp;&nbsp;
+                            <a id="termlog0Sel" class="sys-log-a-notselected"
+                               href="javascript:termlog.exportTimeSel('termlog0Sel', 0, 'termLogTimeSelectZone')">{[termlog.html.all]}</a>&nbsp;&nbsp;&nbsp;
+                            <br>
+                            <span class="input-icon input-icon-right">
+								<input type="text" class="form-control m-sl-time" style="width: 250px" readonly="readonly" id="termLogTimeSelectZone" name="termLogTimeSelectZone"/>
+								<i class="fa fa-calendar glyphicon glyphicon-calendar"></i>
+							</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer m-modalFooter-yeaLink" style="text-align: center">
+                <a href="" id="termLogDownloadA" style="display: none"></a>
+                <button type="button" onmouseup="termlog.download()" class="btn btn-yealink m-commit" style="width:120px;">{[termlog.html.export]}</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="button" class="btn btn-default" style="width:120px;" data-dismiss="modal">{[termlog.html.cancel]}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="html/serverlog/serverlog.js"></script>
+<script type="text/javascript" src="html/termlog/termlog.js"></script>
