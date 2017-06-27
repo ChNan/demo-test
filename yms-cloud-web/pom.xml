@@ -43,6 +43,12 @@
         <license.interface.version>1.0.0</license.interface.version>
         <ical4j.version>2.0-beta1</ical4j.version>
         <ical4j.outlook.version>1.0.4</ical4j.outlook.version>
+
+        <project.build.targetJDK>1.8</project.build.targetJDK>
+        <plugin.checkstyle.version>2.16</plugin.checkstyle.version>
+        <plugin.pmd.version>2.7.1</plugin.pmd.version>
+        <plugin.findbugs.version>2.5.2</plugin.findbugs.version>
+        <plugin.jacoco.version>0.6.2.201302030002</plugin.jacoco.version>
     </properties>
     <url>http://maven.apache.org</url>
     <dependencyManagement>  <!-- spring cloud ,cloud版本新增-->
@@ -324,6 +330,8 @@
     </dependencies>
     <build>
         <finalName>soft-mcu-web</finalName>
+
+
         <plugins>
             <!-- spring boot start plugin -->
             <plugin>
@@ -333,6 +341,122 @@
                     <mainClass>com.yealink.softmcu.Application</mainClass>
                     <addResources>false</addResources>
                 </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>${plugin.checkstyle.version}</version>
+                <configuration>
+                    <configLocation>${project.basedir}/build/check-style.xml</configLocation>
+                    <includeTestSourceDirectory>true</includeTestSourceDirectory>
+                    <suppressionsLocation>${project.basedir}/build/check-style-suppression.xml</suppressionsLocation>
+                    <consoleOutput>true</consoleOutput>
+                    <failsOnError>true</failsOnError>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>${plugin.pmd.version}</version>
+                <configuration>
+                    <rulesets>
+                        <ruleset>build/pmd.xml</ruleset>
+                    </rulesets>
+                    <targetJdk>${project.build.targetJDK}</targetJdk>
+                    <verbose>true</verbose>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>check</goal>
+                            <goal>cpd-check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+                <version>${plugin.findbugs.version}</version>
+                <configuration>
+                    <excludeFilterFile>build/find-bugs-exclude-filter.xml</excludeFilterFile>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!--包含空文件夹-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.6</version>
+                <configuration>
+                    <includeEmptyDirectories>true</includeEmptyDirectories>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.14.1</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.7.9</version>
+                <executions>
+                    <execution>
+                        <id>default-prepare-agent</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>default-report</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>default-check</id>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <!--  implementation is needed only for Maven 2  -->
+                                <rule implementation="org.jacoco.maven.RuleConfiguration">
+                                    <element>BUNDLE</element>
+                                    <limits>
+                                        <!--  implementation is needed only for Maven 2  -->
+                                        <limit implementation="org.jacoco.report.check.Limit">
+                                            <counter>COMPLEXITY</counter>
+                                            <value>COVEREDRATIO</value>
+                                            <minimum>0.60</minimum>
+                                        </limit>
+                                    </limits>
+                                </rule>
+                            </rules>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
         <resources>
