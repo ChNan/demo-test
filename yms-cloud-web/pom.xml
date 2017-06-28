@@ -48,7 +48,8 @@
         <plugin.checkstyle.version>2.16</plugin.checkstyle.version>
         <plugin.pmd.version>2.7.1</plugin.pmd.version>
         <plugin.findbugs.version>2.5.2</plugin.findbugs.version>
-        <plugin.jacoco.version>0.6.2.201302030002</plugin.jacoco.version>
+        <plugin.jacoco.version>0.7.9</plugin.jacoco.version>
+        <plugin.surefire.version>0.7.9</plugin.surefire.version>
     </properties>
     <url>http://maven.apache.org</url>
     <dependencyManagement>  <!-- spring cloud ,cloud版本新增-->
@@ -419,7 +420,7 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.7.9</version>
+                <version>${plugin.jacoco.version}</version>
                 <executions>
                     <execution>
                         <id>default-prepare-agent</id>

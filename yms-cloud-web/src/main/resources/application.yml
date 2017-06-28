@@ -2,7 +2,10 @@
 spring.application.name:  yms-cloud-web
 
 # 发现服务配置
-eureka.client.serviceUrl.defaultZone: http://admin:Cloud_2016@10.2.61.201:9000/eureka/,http://admin:Cloud_2016@10.2.61.202:9000/eureka/,http://admin:Cloud_2016@10.2.61.203:9000/eureka/
+eureka.client.serviceUrl.defaultZone:
+http://admin:Cloud_2016@10.2.61.201:9000/eureka/,
+http://admin:Cloud_2016@10.2.61.202:9000/eureka/,
+http://admin:Cloud_2016@10.2.61.203:9000/eureka/
 eureka:
   instance:
     leaseRenewalIntervalInSeconds: 1
@@ -27,34 +30,6 @@ endpoints.health.enabled: true
 
 
 ## 旧的Premise配置
-softmcu.version: 1.23.254.12
-softmcu.sip.version: 3.6.0.6
-softmcu.nat.version: 1.0.0.6
-softmcu.mcu.version: 1.1.0.3
-softmcu.web.version: 1.0.8.1
-softmcu.versionFile: /usr/local/apollo/version
-
-mail.time.out.establish : 30000
-mail.time.out.send : 30000
-mail.send.server: mail.yealink.com
-mail.send.port: 25
-mail.send.password:  FA230DB58B80E0825498D6A837C3ADFC
-mail.send.username: vccloud@yealink.com
-
-# timeout (in milliseconds) for establishing the SMTP connection
-# send mail interval time, unit:millisecond, 5s
-mail.send.interval.milliseconde :  5000
-# 邮件队列中相同账号发件间隔时间，单位：毫秒
-mail.queue.same.account.delay :  6000
-# 邮件队列中相同账号发送相同主题邮件间隔时间，单位：毫秒
-mail.queue.same.subject.delay :  15000
-# 邮件队列中，被阻止邮件发送之后的等待时间，单位：毫秒
-mail.queue.block.delay :  2400000
-
-package.file.name: apollo_install
-package.shell.name: install.sh
-outlook.download.url: http://10.3.19.173/premise/updateinfo.json
-
 server:
     port: 80
 
@@ -86,7 +61,6 @@ http://admin:Cloud_2016@10.2.61.201:9000/eureka/,
 http://admin:Cloud_2016@10.2.61.202:9000/eureka/,
 http://admin:Cloud_2016@10.2.61.203:9000/eureka/
 microservice.user.host:
-
 
 ---
 spring:
